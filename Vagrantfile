@@ -52,8 +52,8 @@ EOF
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "vagrant-pc"
-        vm.gui = true
+        vm.name = "lb01"
+        vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
     end
@@ -72,8 +72,8 @@ EOF
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "vagrant-pc"
-        vm.gui = true
+        vm.name = "app01"
+        vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
     end
@@ -92,8 +92,8 @@ EOF
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "vagrant-pc"
-        vm.gui = true
+        vm.name = "app02"
+        vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
     end
@@ -112,8 +112,8 @@ EOF
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "vagrant-pc"
-        vm.gui = true
+        vm.name = "db01"
+        vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
     end
