@@ -59,7 +59,7 @@ EOF
     end
   end
 
-  h.vm.define "app01" do |h|
+  config.vm.define "app01" do |h|
     h.vm.box = "mwrock/Windows2012R2"
     h.vm.hostname = "app01"
     h.vm.network "private_network", ip: "192.168.135.111"
