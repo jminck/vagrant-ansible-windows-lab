@@ -11,3 +11,7 @@ sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update -y
 sudo apt-get install ansible -y
 
+sudo ansible-galaxy install deekayen.win_updates
+sudo ansible-galaxy install mrlesmithjr.windows-iis
+
+
