@@ -1,4 +1,5 @@
 Install-WindowsFeature -Name AD-Domain-Services
+$SafeModeAdministratorPassword = ConvertTo-SecureString "P@ssW0rD1!" -AsPlainText -Force
 
 #
 # Windows PowerShell script for AD DS Deployment
@@ -15,4 +16,5 @@ Install-ADDSForest `
 -LogPath "C:\Windows\NTDS" `
 -NoRebootOnCompletion:$false `
 -SysvolPath "C:\Windows\SYSVOL" `
--Force:$true
+-Force:$true `
+-SafeModeAdministratorPassword $SafeModeAdministratorPassword
