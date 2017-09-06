@@ -48,7 +48,6 @@ EOF
     h.vm.boot_timeout = 600
     h.vm.graceful_halt_timeout = 600
 
-    h.vm.network :forwarded_port, guest: 3389, host: 33389,  auto_correct: true
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
@@ -68,7 +67,6 @@ EOF
     h.vm.boot_timeout = 600
     h.vm.graceful_halt_timeout = 600
 
-    h.vm.network :forwarded_port, guest: 3389, host: 33389,  auto_correct: true
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
@@ -88,7 +86,6 @@ EOF
     h.vm.boot_timeout = 600
     h.vm.graceful_halt_timeout = 600
 
-    h.vm.network :forwarded_port, guest: 3389, host: 33389,  auto_correct: true
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
@@ -108,7 +105,6 @@ EOF
     h.vm.boot_timeout = 600
     h.vm.graceful_halt_timeout = 600
 
-    h.vm.network :forwarded_port, guest: 3389, host: 33389,  auto_correct: true
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
     h.vm.provider "virtualbox" do |vm|
