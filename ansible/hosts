@@ -1,0 +1,24 @@
+[loadbalancer]
+lb01
+
+[webserver]
+app01
+app02
+
+[database]
+db01
+
+[control]
+control ansible_connection=local
+
+[windows]
+lb01
+db01
+app01
+app02
+
+[windows:vars]
+ ansible_ssh_user=vagrant
+ ansible_ssh_pass=vagrant
+ ansible_ssh_port=5986
+ ansible_connection=winrm
