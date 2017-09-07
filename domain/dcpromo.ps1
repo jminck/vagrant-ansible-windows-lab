@@ -5,7 +5,6 @@ $SafeModeAdministratorPassword = ConvertTo-SecureString "P@ssW0rD1!" -AsPlainTex
 #
 Import-Module ADDSDeployment
 Install-ADDSForest `
--CreateDnsDelegation:$false `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainMode "Win2012" `
 -DomainName "mytest.com" `
@@ -17,3 +16,5 @@ Install-ADDSForest `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true `
 -SafeModeAdministratorPassword $SafeModeAdministratorPassword
+
+Start-Sleep 120
