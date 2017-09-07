@@ -1,4 +1,4 @@
-Set-DNSClientServerAddress –interfaceIndex 13 –ServerAddresses ("192.168.136.101")
+Set-DNSClientServerAddress -interfaceIndex 13 -ServerAddresses ("192.168.136.101")
 
 $domain = "mytest"
 $password = "vagrant" | ConvertTo-SecureString -asPlainText -Force
