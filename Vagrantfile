@@ -50,8 +50,9 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
+    config.vm.provision "shell", path: "domain\dcpromo.ps1", powershell_elevated_interactive: true 
+
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "lb01"
         vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
@@ -69,8 +70,9 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
+    config.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "app01"
         vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
@@ -87,9 +89,10 @@ EOF
     h.vm.graceful_halt_timeout = 600
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+
+    config.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
     
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "app02"
         vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
@@ -106,9 +109,10 @@ EOF
     h.vm.graceful_halt_timeout = 600
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+
+    config.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
     
     h.vm.provider "virtualbox" do |vm|
-        vm.name = "db01"
         vm.gui = false
         vm.cpus = 2
         vm.memory = 2048
