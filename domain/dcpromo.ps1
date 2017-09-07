@@ -1,4 +1,3 @@
-Install-WindowsFeature -Name AD-Domain-Services
 $SafeModeAdministratorPassword = ConvertTo-SecureString "P@ssW0rD1!" -AsPlainText -Force
 
 #

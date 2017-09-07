@@ -50,6 +50,8 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
+    h.vm.provision "shell", path: "domain/installAD.ps1", powershell_elevated_interactive: true 
+    h.vm.provision :reload 
     h.vm.provision "shell", path: "domain/dcpromo.ps1", powershell_elevated_interactive: true 
     h.vm.provision "shell", inline: "slmgr /rearm"
 
@@ -71,7 +73,7 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    h.vm.provision "shell", path: "domain/joindomain.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain/joindomain.ps1", powershell_elevated_interactive: true
     h.vm.provision "shell", inline: "slmgr /rearm"
 
     h.vm.provider "virtualbox" do |vm|
