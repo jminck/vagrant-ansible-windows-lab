@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "control", primary: true do |h|
     h.vm.hostname =  "control"
-    h.vm.network "private_network", ip: "192.168.135.10"
+    h.vm.network "private_network", ip: "192.168.136.10"
     h.vm.provision :shell, inline: 'echo demo > /home/vagrant/.vault_pass.txt'
     h.vm.provision "shell" do |provision|
       provision.path = "provision_ansible.sh"
@@ -42,7 +42,7 @@ EOF
   config.vm.define "lb01" do |h|
     h.vm.box = "mwrock/Windows2012R2"
     h.vm.hostname = "lb01"
-    h.vm.network "private_network", ip: "192.168.135.101"
+    h.vm.network "private_network", ip: "192.168.136.101"
     h.vm.guest = :windows
     h.vm.communicator = "winrm"
     h.vm.boot_timeout = 600
@@ -50,7 +50,7 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    h.vm.provision "shell", path: "domain\dcpromo.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain/dcpromo.ps1", powershell_elevated_interactive: true 
     h.vm.provision "shell", inline: "slmgr /rearm"
 
     h.vm.provider "virtualbox" do |vm|
@@ -63,7 +63,7 @@ EOF
   config.vm.define "app01" do |h|
     h.vm.box = "mwrock/Windows2012R2"
     h.vm.hostname = "app01"
-    h.vm.network "private_network", ip: "192.168.135.111"
+    h.vm.network "private_network", ip: "192.168.136.111"
     h.vm.guest = :windows
     h.vm.communicator = "winrm"
     h.vm.boot_timeout = 600
@@ -71,7 +71,7 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    h.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain/domainjoin.ps1", powershell_elevated_interactive: true 
     h.vm.provision "shell", inline: "slmgr /rearm"
 
     h.vm.provider "virtualbox" do |vm|
@@ -84,7 +84,7 @@ EOF
   config.vm.define "app02" do |h|
     h.vm.box = "mwrock/Windows2012R2"
     h.vm.hostname = "app02"
-    h.vm.network "private_network", ip: "192.168.135.112"
+    h.vm.network "private_network", ip: "192.168.136.112"
     h.vm.guest = :windows
     h.vm.communicator = "winrm"
     h.vm.boot_timeout = 600
@@ -92,7 +92,7 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    h.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true
+    h.vm.provision "shell", path: "domain/domainjoin.ps1", powershell_elevated_interactive: true
     h.vm.provision "shell", inline: "slmgr /rearm" 
     
     h.vm.provider "virtualbox" do |vm|
@@ -105,7 +105,7 @@ EOF
   config.vm.define "db01" do |h|
     h.vm.box = "mwrock/Windows2012R2"
     h.vm.hostname = "db01"
-    h.vm.network "private_network", ip: "192.168.135.121"
+    h.vm.network "private_network", ip: "192.168.136.121"
     h.vm.guest = :windows
     h.vm.communicator = "winrm"
     h.vm.boot_timeout = 600
@@ -113,7 +113,7 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    h.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain/domainjoin.ps1", powershell_elevated_interactive: true 
     h.vm.provision "shell", inline: "slmgr /rearm"
     
     h.vm.provider "virtualbox" do |vm|
