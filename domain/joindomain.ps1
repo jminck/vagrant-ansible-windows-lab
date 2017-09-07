@@ -6,4 +6,7 @@ $username = "$domain\vagrant"
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
 Add-Computer -DomainName $domain -Credential $credential
 
-start-sleep 120
+start-sleep 121
+
+
+
