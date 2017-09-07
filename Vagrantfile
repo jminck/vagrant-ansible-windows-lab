@@ -50,7 +50,8 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    config.vm.provision "shell", path: "domain\dcpromo.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain\dcpromo.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", inline: "slmgr /rearm"
 
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
@@ -70,7 +71,8 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    config.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", inline: "slmgr /rearm"
 
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
@@ -90,7 +92,8 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    config.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true
+    h.vm.provision "shell", inline: "slmgr /rearm" 
     
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
@@ -110,7 +113,8 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    config.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", path: "domain\domainjoin.ps1", powershell_elevated_interactive: true 
+    h.vm.provision "shell", inline: "slmgr /rearm"
     
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
