@@ -22,3 +22,4 @@ app02
  ansible_ssh_pass=vagrant
  ansible_ssh_port=5986
  ansible_connection=winrm
+ ansible_winrm_server_cert_validation=ignore
