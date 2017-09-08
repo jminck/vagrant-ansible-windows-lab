@@ -7,7 +7,7 @@ Import-Module ADDSDeployment
 Install-ADDSForest `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainMode "Win2012" `
--DomainName "mytest.com" `
+-DomainName "mytest.local" `
 -DomainNetbiosName "MYTEST" `
 -ForestMode "Win2012" `
 -InstallDns:$true `
