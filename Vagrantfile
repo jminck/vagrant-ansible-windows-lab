@@ -77,6 +77,7 @@ EOF
     
     h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false 
     h.vm.provision "shell", inline: "slmgr /rearm"
+    h.vm.provision :reload 
     h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
 
     h.vm.provider "virtualbox" do |vm|
@@ -99,6 +100,7 @@ EOF
     
     h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false
     h.vm.provision "shell", inline: "slmgr /rearm"
+    h.vm.provision :reload 
     h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
 
     h.vm.provider "virtualbox" do |vm|
@@ -121,6 +123,7 @@ EOF
 
     h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false
     h.vm.provision "shell", inline: "slmgr /rearm" 
+    h.vm.provision :reload 
     h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
     
     h.vm.provider "virtualbox" do |vm|
@@ -143,6 +146,7 @@ EOF
 
     h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false 
     h.vm.provision "shell", inline: "slmgr /rearm"
+    h.vm.provision :reload 
     h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
 
     h.vm.provider "virtualbox" do |vm|
