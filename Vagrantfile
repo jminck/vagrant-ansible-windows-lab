@@ -39,6 +39,28 @@ chown -R vagrant:vagrant /home/vagrant/.ssh/
 EOF
   end
 
+  config.vm.define "dc01" do |h|
+    h.vm.box = "mwrock/Windows2012R2"
+    h.vm.hostname = "dc01"
+    h.vm.network "private_network", ip: "192.168.136.11"
+    h.vm.guest = :windows
+    h.vm.communicator = "winrm"
+    h.vm.boot_timeout = 600
+    h.vm.graceful_halt_timeout = 600
+
+    h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+
+    h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false 
+    h.vm.provision "shell", inline: "slmgr /rearm"
+    h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
+
+    h.vm.provider "virtualbox" do |vm|
+        vm.gui = false
+        vm.cpus = 2
+        vm.memory = 2048
+    end
+  end
+
   config.vm.define "lb01" do |h|
     h.vm.box = "mwrock/Windows2012R2"
     h.vm.hostname = "lb01"
@@ -50,10 +72,11 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    h.vm.provision "shell", path: "domain/installAD.ps1", powershell_elevated_interactive: false 
+    h.vm.provision "shell", path: "scripts/windows/domain/installAD.ps1", powershell_elevated_interactive: false 
     h.vm.provision :reload 
-    h.vm.provision "shell", path: "domain/dcpromo.ps1", powershell_elevated_interactive: false 
+    h.vm.provision "shell", path: "scripts/windows/domain/dcpromo.ps1", powershell_elevated_interactive: false 
     h.vm.provision "shell", inline: "slmgr /rearm"
+    h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
 
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
@@ -73,8 +96,9 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
     
-    h.vm.provision "shell", path: "domain/joindomain.ps1", powershell_elevated_interactive: false
+    h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false
     h.vm.provision "shell", inline: "slmgr /rearm"
+    h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
 
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
@@ -94,8 +118,9 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    h.vm.provision "shell", path: "domain/joindomain.ps1", powershell_elevated_interactive: false
+    h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false
     h.vm.provision "shell", inline: "slmgr /rearm" 
+    h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
     
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
@@ -115,9 +140,10 @@ EOF
 
     h.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    h.vm.provision "shell", path: "domain/joindomain.ps1", powershell_elevated_interactive: false 
+    h.vm.provision "shell", path: "scripts/windows/domain/joindomain.ps1", powershell_elevated_interactive: false 
     h.vm.provision "shell", inline: "slmgr /rearm"
-    
+    h.vm.provision "shell", path: "scripts/windows/install-sshd.ps1", powershell_elevated_interactive: false 
+
     h.vm.provider "virtualbox" do |vm|
         vm.gui = false
         vm.cpus = 2
