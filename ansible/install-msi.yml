@@ -1,13 +1,18 @@
-- name: Install Apache from an MSI
+- name: Install Winzip from an MSI
   hosts: all
 
   tasks:
+    - name: Create c:\Downloads directory
+      win_file: 
+        path: C:\Downloads 
+        state: directory
+
     - name: Download the Apache installer
       win_get_url:
-        url: 'http://mirror.cc.columbia.edu/pub/software/apache//httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi'
-        dest: 'C:\Downloads\httpd-2.2.25-win32-x86-no_ssl.msi'
+        url: 'http://download.winzip.com/winzip215-64.msi'
+        dest: 'C:\Downloads\winzip215-64.msi'
 
     - name: Install MSI
       win_msi:
-        path: 'C:\Downloads\httpd-2.2.25-win32-x86-no_ssl.msi'
+        path: 'C:\Downloads\winzip215-64.msi'
         state: present
