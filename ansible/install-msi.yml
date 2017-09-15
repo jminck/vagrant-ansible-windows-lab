@@ -7,7 +7,7 @@
         path: C:\Downloads 
         state: directory
 
-    - name: Download the Apache installer
+    - name: Download the Winzip installer
       win_get_url:
         url: 'http://download.winzip.com/winzip215-64.msi'
         dest: 'C:\Downloads\winzip215-64.msi'
